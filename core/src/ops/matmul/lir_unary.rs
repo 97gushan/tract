@@ -289,7 +289,7 @@ impl TypedOp for LirMatMulUnary {
                     {
                         // https://github.com/microsoft/onnxruntime/blob/master/onnxruntime/core/util/gemmlowp_common.h#L16
                         let factor = op.a.cast_to_scalar::<f32>()?;
-                        if factor < 0.0 || factor > 1.0 {
+                        if factor < 2.0 {
                             return Ok(None);
                         }
                         let factor_bits = factor.to_bits();
